@@ -16,6 +16,7 @@ const clerk = new Clerk(clerkPubKey);
  * https://clerk.com/docs/authentication/allowlist
  */
 export const isUserAllowed = (emailAddress: string) => {
+  console.log('isUserAllowed', emailAddress, process.env.TINA_PUBLIC_CLERK_ALLOWLIST)
   const allowList = process.env.TINA_PUBLIC_CLERK_ALLOWLIST?.split(",") ?? [];
   if (allowList.includes(emailAddress)) {
     return true;
@@ -32,16 +33,21 @@ const config = defineConfig({
       useLocalAuth: isLocal,
       customAuth: !isLocal,
       getToken: async () => {
+        console.log("getting token")
         await clerk.load();
         if (clerk.session) {
+          console.log('returning token')
           return { id_token: await clerk.session.getToken() };
         }
+        console.log('no token')
       },
       logout: async () => {
+        console.log('logging out')
         await clerk.load();
         await clerk.session.remove();
       },
       authenticate: async () => {
+        console.log('authenticating')
         clerk.openSignIn({
           redirectUrl: "/admin/index.html", // This should be the Tina admin path
           appearance: {
@@ -60,6 +66,7 @@ const config = defineConfig({
       },
       getUser: async () => {
         await clerk.load();
+        console.log(clerk.user)
         if (clerk.user) {
           if (isUserAllowed(clerk.user.primaryEmailAddress.emailAddress)) {
             return true;
