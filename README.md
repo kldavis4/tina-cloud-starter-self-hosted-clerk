@@ -14,7 +14,7 @@ TINA_PUBLIC_CLERK_PUBLIC_KEY=pk_test_my-clerk-public-key
 TINA_PUBLIC_IS_LOCAL=false
 ```
 
-> Note: In order to test the Clerk flow locally `TINA_PUBLIC_IS_LOCAL` is set to true. You can set that to false when not testing the Clerk integration.
+> Note: In order to test the Clerk flow locally `TINA_PUBLIC_IS_LOCAL` is set to false. You can set that to true when not testing the Clerk integration.
 
 ## Start the app
 

@@ -68,11 +68,11 @@ const config = defineConfig({
         await clerk.load();
         console.log(clerk.user)
         if (clerk.user) {
-          if (isUserAllowed(clerk.user.primaryEmailAddress.emailAddress)) {
+          // if (isUserAllowed(clerk.user.primaryEmailAddress.emailAddress)) {
             return true;
-          }
+          // }
           // Handle when a user is logged in outside of the org
-          clerk.session.end();
+          // clerk.session.end();
         }
         return false;
       },
