@@ -8,7 +8,7 @@ import { iconSchema } from "../components/util/icon";
 import Clerk from "@clerk/clerk-js";
 import { neobrutalism, shadesOfPurple } from "@clerk/themes";
 
-const clerkPubKey = process.env.TINA_PUBLIC_CLERK_PUBLIC_KEY;
+const clerkPubKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
 const clerk = new Clerk(clerkPubKey);
 
 /**
@@ -16,7 +16,7 @@ const clerk = new Clerk(clerkPubKey);
  * https://clerk.com/docs/authentication/allowlist
  */
 export const isUserAllowed = (emailAddress: string) => {
-  const allowList = ["jeffsee.55@gmail.com"];
+  const allowList = process.env.TINA_PUBLIC_CLERK_ALLOWLIST?.split(",") ?? [];
   if (allowList.includes(emailAddress)) {
     return true;
   }
