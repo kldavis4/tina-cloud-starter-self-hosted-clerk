@@ -3627,7 +3627,7 @@
     typescript "^4.6.4"
     zod "^3.14.3"
 
-"@tinacms/cli@^0.0.0-20230816165608":
+"@tinacms/cli@^0.0.0-20230725171356":
   version "0.0.0-20230816165608"
   resolved "https://registry.yarnpkg.com/@tinacms/cli/-/cli-0.0.0-20230816165608.tgz#9a9f8411ee2b69f40d1b0c60c827651daf3d3481"
   integrity sha512-2jDwEsqaRmdVSsJ8qVMSjnF1gZ3zDdwRjymhLQ79gjosyewdtnsEH5AZM+2cGbfmI/H14CTqFUfF8lOxzfjSgg==
