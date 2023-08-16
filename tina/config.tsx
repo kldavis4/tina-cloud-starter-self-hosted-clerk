@@ -64,17 +64,16 @@ const config = defineConfig({
           },
         });
       },
-      getUser: async () => {
-        await clerk.load();
-        console.log(clerk.user)
-        if (clerk.user) {
-          // if (isUserAllowed(clerk.user.primaryEmailAddress.emailAddress)) {
-            return true;
-          // }
-          // Handle when a user is logged in outside of the org
-          // clerk.session.end();
+      authorize: async () => {
+        await clerk.load()
+        if (!clerk.user) {
+          return false
         }
-        return false;
+        return isUserAllowed(clerk.user.primaryEmailAddress.emailAddress)
+      },
+      getUser: async () => {
+        await clerk.load()
+        return !!clerk.user
       },
     },
   },
