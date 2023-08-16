@@ -26,6 +26,7 @@ export const isUserAllowed = (emailAddress: string) => {
 const isLocal = process.env.TINA_PUBLIC_IS_LOCAL === "true";
 console.log({isLocal})
 
+// @ts-ignore
 const config = defineConfig({
   contentApiUrlOverride: "/api/graphql",
   admin: {
@@ -101,6 +102,7 @@ const config = defineConfig({
         path: "content/posts",
         format: "mdx",
         ui: {
+          // @ts-ignore
           router: ({ document }) => {
             return `/posts/${document._sys.filename}`;
           },
@@ -391,6 +393,7 @@ const config = defineConfig({
         name: "page",
         path: "content/pages",
         ui: {
+          // @ts-ignore
           router: ({ document }) => {
             if (document._sys.filename === "home") {
               return `/`;
