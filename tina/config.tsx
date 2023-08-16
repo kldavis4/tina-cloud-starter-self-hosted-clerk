@@ -6,7 +6,6 @@ import { testimonialBlockSchema } from "../components/blocks/testimonial";
 import { ColorPickerInput } from "./fields/color";
 import { iconSchema } from "../components/util/icon";
 import Clerk from "@clerk/clerk-js";
-import { neobrutalism, shadesOfPurple } from "@clerk/themes";
 
 const clerkPubKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
 const clerk = new Clerk(clerkPubKey);
@@ -25,6 +24,7 @@ export const isUserAllowed = (emailAddress: string) => {
 };
 
 const isLocal = process.env.TINA_PUBLIC_IS_LOCAL === "true";
+console.log({isLocal})
 
 const config = defineConfig({
   contentApiUrlOverride: "/api/graphql",
